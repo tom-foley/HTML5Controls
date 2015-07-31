@@ -196,7 +196,7 @@ FakesAssemblies/
 *.opt
 
 # Web Essentials
-.scss
-.css.map
+*.scss
+*.css.map
 
-.min.js.map
+*.min.js.map
