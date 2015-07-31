@@ -62,7 +62,7 @@
             if (this.firstOfMonth.getDay() === 0) {
                 this.startDate = this.firstOfMonth;
             } else {
-                this.startDate = new Date(prevCal.Year, prevCal.Month, new Date(this.year, this.month, 0).getUTCDate() - (7 - this.day) + 1);
+                this.startDate = new Date(prevCal.Year, prevCal.Month, new Date(this.year, this.month, 0).getUTCDate() - this.day);
             }
 
             if (this.lastOfMonth.getDay() === 6) {
