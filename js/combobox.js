@@ -3,18 +3,18 @@
     'use strict';
 
     window.ComboBox = function () {
-        var control = this;
+        var comboBox = this;
 
-        control.comboBoxList = ["one", "two", "three", "four", "five", "six",
+        comboBox.fullList = ["one", "two", "three", "four", "five", "six",
                              "seven", "eight", "nine", "ten", "eleven", "twelve"];
-        control.currentList = [];
+        comboBox.activeList = [];
 
 
         /*
          *  Main
          */
-        control.init = function () {
-            control.initializeComboBoxes();
+        comboBox.init = function () {
+            comboBox.initializeComboBoxes();
             this.addEventListeners();
         }
 
@@ -22,37 +22,37 @@
         /*
          *  Public Methods
          */
-        control.initializeComboBoxes = function (ev) {
-            var comboBoxes = document.getElementsByClassName('combobox');
+        comboBox.initializeComboBoxes = function (ev) {
+            var boxes = document.getElementsByClassName('combobox');
 
-            if (comboBoxes) {
+            if (boxes) {
                 var i, j;
-                var comboBox, comboBoxDrp, comboBoxDrpArrow;
+                var currentBox, drp, drpArrow;
                 
-                var parent = comboBoxes[0].parentNode;
-                for (i = 0; i < comboBoxes.length; i++) {
-                    comboBox = comboBoxes[i];
+                var parent = boxes[0].parentNode;
+                for (i = 0; i < boxes.length; i++) {
+                    currentBox = boxes[i];
 
                     // set list-id
-                    comboBox.setAttribute('data-combobox-id', i.toString());
-                    comboBox.value = control.comboBoxList[0];
+                    currentBox.setAttribute('data-combobox-id', i.toString());
+                    currentBox.value = comboBox.fullList[0];
 
                     // create dropdown element
-                    comboBoxDrp = document.createElement('div');
-                    comboBoxDrp.id = 'drp' + i.toString();
-                    comboBoxDrp.className = 'combobox-drp';
+                    drp = document.createElement('div');
+                    drp.id = 'drp' + i.toString();
+                    drp.className = 'combobox-drp';
 
                     var ul, li, span, listItem;
                     ul = document.createElement('ul');
 
-                    for (j = 0; j < control.comboBoxList.length; j++) {
-                        listItem = control.comboBoxList[j];
+                    for (j = 0; j < comboBox.fullList.length; j++) {
+                        listItem = comboBox.fullList[j];
                         li = document.createElement('li');
                         li.setAttribute('data-combobox-id', i.toString());
                         li.setAttribute('value', listItem);
                         li.addEventListener('click', displaySelectedValue, false);
                         //li.addEventListener('keyup', function () {
-                        //    console.log(comboBox)
+                        //    console.log(currentBox)
                         //}, false);
                         span = document.createElement('span');
                         span.innerHTML = listItem;
@@ -60,32 +60,32 @@
 
                         ul.appendChild(li);
                     }
-                    comboBoxDrp.appendChild(ul);
+                    drp.appendChild(ul);
 
                     // create dropdown arrow on RHS of input box
-                    comboBoxDrpArrow = document.createElement('div');
-                    comboBoxDrpArrow.className = 'combobox-drp-arrow';
-                    comboBoxDrpArrow.addEventListener('click', toggleComboBoxDrp, false);
-                    comboBoxDrpArrow.drp = comboBoxDrp;
+                    drpArrow = document.createElement('div');
+                    drpArrow.className = 'combobox-drp-arrow';
+                    drpArrow.addEventListener('click', toggleDrp, false);
+                    drpArrow.drp = drp;
 
                     // append it to input box
-                    if (comboBoxes[i].nextSibling) {
-                        parent.insertBefore(comboBoxDrpArrow, comboBox.nextSibling);
-                        parent.insertBefore(comboBoxDrp, comboBoxDrpArrow.nextSibling);
+                    if (boxes[i].nextSibling) {
+                        parent.insertBefore(drpArrow, currentBox.nextSibling);
+                        parent.insertBefore(drp, drpArrow.nextSibling);
                     } else {
-                        parent.appendChild(comboBoxDrpArrow);
-                        parent.appendChild(comboBoxDrp);
+                        parent.appendChild(drpArrow);
+                        parent.appendChild(drp);
                     }
                 }
             }
         }
 
-        control.addEventListeners = function (ev) {
-            var comboBoxDrp = document.getElementById('combobox-drp');
+        comboBox.addEventListeners = function (ev) {
+            var drp = document.getElementById('combobox-drp');
             var comboBoxInput = document.getElementById('combobox-input');
 
-            if (comboBoxDrp) {
-                comboBoxDrp.addEventListener('click', toggleComboBoxDrp, false);
+            if (drp) {
+                drp.addEventListener('click', toggleDrp, false);
             }
 
             if (comboBoxInput) {
@@ -93,7 +93,7 @@
             }
         }
 
-        control.init();
+        comboBox.init();
 
 
         /*
@@ -103,12 +103,12 @@
         // display it in input box
         function displaySelectedValue(ev) {
             var i, 
-                comboBoxes = document.getElementsByClassName('combobox'),
+                boxes = document.getElementsByClassName('combobox'),
                 id = this.getAttribute('data-combobox-id');
 
-            for (i = 0; i < comboBoxes.length; i++) {
-                if (comboBoxes[i].getAttribute('data-combobox-id') == id) {
-                    comboBoxes[i].value = this.value;
+            for (i = 0; i < boxes.length; i++) {
+                if (boxes[i].getAttribute('data-combobox-id') == id) {
+                    boxes[i].value = this.value;
                     return;
                 }
             }
@@ -133,7 +133,7 @@
          *  Adds/Removes classes to trigger animations for ComboBox.
          *  Triggered by clicking on inputBox, arrowButton, or tabbing
          */
-        function toggleComboBoxDrp(el) {
+        function toggleDrp(el) {
             var drp = el.target.drp;
             if (drp.classList.contains('active')) {
                 drp.classList.remove('active');
@@ -157,17 +157,17 @@
                 if (inputString.value.length === 0) {
                     return;
                 } else if (inputString.value.length === 1) {
-                    control.currentList = control.comboBoxList.filter(filterKeyPressed, inputString);
-                } else if (inputString.value.length > 1 && control.currentList.length > 0) {
-                    var tmpList = control.currentList.filter(filterKeyPressed, inputString);
-                    control.currentList = tmpList;
+                    comboBox.activeList = comboBox.fullList.filter(filterKeyPressed, inputString);
+                } else if (inputString.value.length > 1 && comboBox.activeList.length > 0) {
+                    var tmpList = comboBox.activeList.filter(filterKeyPressed, inputString);
+                    comboBox.activeList = tmpList;
                 }
-                if (control.currentList.length > 0) {
+                if (comboBox.activeList.length > 0) {
                     var listNode = document.createElement("ul"), listItemNode;
                     listNode.setAttribute("id", "results-list");
-                    for (var i = 0; i < control.currentList.length; i++) {
+                    for (var i = 0; i < comboBox.activeList.length; i++) {
                         listItemNode = document.createElement("li");
-                        listItemNode.appendChild(document.createTextNode(control.currentList[i].toString()));
+                        listItemNode.appendChild(document.createTextNode(comboBox.activeList[i].toString()));
                         listNode.appendChild(listItemNode);
                     }
                     dropdown.appendChild(listNode);
