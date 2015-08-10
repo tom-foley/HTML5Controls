@@ -16,7 +16,7 @@ To use the image gallery, we just need two(2) wrapper elements, the image elemen
 
 #### Template
 ```
-    <link rel="stylesheet" href="{{path-to-imagegallery-css}}"/>
+    <link rel="stylesheet" href="{{path-to-image-gallery-css}}"/>
     <style>
         div.image-gallery-container {
             width: 250px;
@@ -37,7 +37,7 @@ To use the image gallery, we just need two(2) wrapper elements, the image elemen
         </div>
     </div>
 
-    <script type="text/javascript" src="{{path-to-imagegallery-js}}"></script>
+    <script type="text/javascript" src="{{path-to-image-gallery-js}}"></script>
     <script type="text/javascript">
         var imageGallery = new ImageGallery();
     </script>
