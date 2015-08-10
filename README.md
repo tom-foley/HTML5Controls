@@ -1,15 +1,14 @@
 # HTML5Controls
-A collection of web user controls written in pure Javascript/HTML/SASS
+A collection of web user controls written in pure Javascript/HTML/CSS
 
 ## Calendar TODO
-- Fix CalendarStart/CalendarEnd dates (CalendarStart should be the sunday before first of month and CalendarEnd should be Saturday after last of month, assuming CalendarStart and CalendarEnd do not already fall on sunday/saturday, respectively)
-
-- Port HTML code from C# View (EventsCalendar Project) to output via JavaScript instead
--Get CSS from EventsCalendar
+- Fix calendar transitions
+- Add data-binding options to allow events to be created/read/updated/deleted
 
 ## ComboBox TODO
 - Filter arrays on user input
 - Move clicked item into input box on click.
 
 ## ImageGallery TODO
-- Done
+- Add Lazy Loading/AJAX Loading option.
+  - If set to true, only 3 pictures will load on page load an all others will load on an individual basis only when needed.
