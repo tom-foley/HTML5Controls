@@ -5,8 +5,6 @@
         var imageGallery = this;
 
         imageGallery.params = {
-            width: 250,
-            height: 250,
             descriptions: false,
             hoverControls: false
         }
@@ -144,15 +142,6 @@
         };
 
         imageGallery.setupGallery = function (gallery) {
-            // Setup dimens
-            if (args['height']) {
-                gallery.parentElement.style.height = imageGallery.params.height + 'px';
-            }
-
-            if (args['width']) {
-                gallery.parentElement.style.width = imageGallery.params.width + 'px';
-            }
-
             // Setup images
             var images = gallery.getElementsByTagName('img');
 
@@ -182,8 +171,3 @@
         this.init();
     };
 })();
-
-var imageGallery = new ImageGallery({
-    width: 350,
-    height: 350,
-});

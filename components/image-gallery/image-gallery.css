@@ -1,6 +1,6 @@
 ﻿.image-gallery-container {
-  width: 250px;
-  height: 250px;
+  width: 350px;
+  height: 350px;
 }
 
 div.image-gallery {
@@ -137,7 +137,7 @@ button.arrow {
   cursor: pointer;
   text-indent: -9999px;
   text-align: center;
-  background-color: #fff;
+  background-color: transparent;
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
