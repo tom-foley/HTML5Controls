@@ -10,5 +10,6 @@ A collection of web user controls written in pure Javascript/HTML/CSS
 - Move clicked item into input box on click.
 
 ## ImageGallery TODO
-- Add Lazy Loading/AJAX Loading option.
-  - If set to true, only 3 pictures will load on page load an all others will load on an individual basis only when needed.
+-   Add option for image descriptions
+-   Add Lazy Loading/AJAX Loading option.
+  -   If set to true, only 3 pictures will load on page load an all others will load on an individual basis only when needed.
