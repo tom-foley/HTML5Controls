@@ -1,8 +1,21 @@
 ﻿(function () {
     'use strict';
 
-    window.ImageGallery = function () {
+    window.ImageGallery = function (args) {
         var imageGallery = this;
+
+        imageGallery.params = {
+            width: 250,
+            height: 250,
+            descriptions: false,
+            hoverControls: false
+        }
+
+        for (var arg in args) {
+            if (imageGallery.params[arg]) {
+                imageGallery.params[arg] = args[arg];
+            }
+        }
 
         imageGallery.writeError = function (gallery, errorString) {
             var span = document.createElement('span');
@@ -26,12 +39,15 @@
             var leftArrow = document.createElement('button');
             leftArrow.className = 'arrow';
             leftArrow.className += ' arrow-left';
+            if (imageGallery.params.hoverControls) leftArrow.className += ' hovercontrols';
+
             var leftInnerArrow = document.createElement('span');
             leftArrow.appendChild(leftInnerArrow);
 
             var rightArrow = document.createElement('button');
             rightArrow.className = 'arrow';
             rightArrow.className += ' arrow-right';
+            if (imageGallery.params.hoverControls) rightArrow.className += ' hovercontrols';
             var rightInnerArrow = document.createElement('span');
             rightArrow.appendChild(rightInnerArrow);
 
@@ -57,7 +73,7 @@
                     images[activeIndex].classList.remove('active');
                     window.setTimeout(function () {
                         images[activeIndex].classList.remove('post-left-img');
-                    }, 700);
+                    }, 500);
                     imageGallery.setActiveImage(images, leftImageIndex, true);
                 }, false);
             }
@@ -72,7 +88,7 @@
                     images[activeIndex].classList.remove('active');
                     window.setTimeout(function () {
                         images[activeIndex].classList.remove('post-right-img');
-                    }, 700);
+                    }, 500);
                     imageGallery.setActiveImage(images, rightImageIndex, true);
                 }, false);
             }
@@ -128,6 +144,16 @@
         };
 
         imageGallery.setupGallery = function (gallery) {
+            // Setup dimens
+            if (args['height']) {
+                gallery.parentElement.style.height = imageGallery.params.height + 'px';
+            }
+
+            if (args['width']) {
+                gallery.parentElement.style.width = imageGallery.params.width + 'px';
+            }
+
+            // Setup images
             var images = gallery.getElementsByTagName('img');
 
             if (images.length > 1) {
@@ -145,7 +171,6 @@
 
         imageGallery.init = function () {
             var galleries = document.getElementsByClassName('image-gallery');
-
             if (galleries) {
                 for (var i = 0; i < galleries.length; i++) {
                     this.setupGallery(galleries[i]);
@@ -158,4 +183,7 @@
     };
 })();
 
-var imageGallery = new ImageGallery();
+var imageGallery = new ImageGallery({
+    width: 350,
+    height: 350,
+});

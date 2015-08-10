@@ -12,8 +12,10 @@ div.image-gallery {
 }
 
 div.image-gallery img {
+  top: 50%;
+  left: 50%;
   opacity: 0;
-  display: block;
+  display: none;
   position: absolute;
   -webkit-transition: transform 0.7s ease-out, opacity 0.7s ease-out;
   -moz-transition: transform 0.7s ease-out, opacity 0.7s ease-out;
@@ -22,12 +24,13 @@ div.image-gallery img {
 }
 
 div.image-gallery img.pre-left-img {
+  display: block;
   opacity: 0;
-  -webkit-transform: translateX(-100%);
-  -moz-transform: translateX(-100%);
-  -ms-transform: translateX(-100%);
-  -o-transform: translateX(-100%);
-  transform: translateX(-100%);
+  -webkit-transform: translate(-100%, -50%);
+  -moz-transform: translate(-100%, -50%);
+  -ms-transform: translate(-100%, -50%);
+  -o-transform: translate(-100%, -50%);
+  transform: translate(-100%, -50%);
   -webkit-transition: transform 0.7s ease-out, opacity 0.7s ease-out;
   -moz-transition: transform 0.7s ease-out, opacity 0.7s ease-out;
   -o-transition: transform 0.7s ease-out, opacity 0.7s ease-out;
@@ -35,12 +38,13 @@ div.image-gallery img.pre-left-img {
 }
 
 div.image-gallery img.pre-right-img {
+  display: block;
   opacity: 0;
-  -webkit-transform: translateX(100%);
-  -moz-transform: translateX(100%);
-  -ms-transform: translateX(100%);
-  -o-transform: translateX(100%);
-  transform: translateX(100%);
+  -webkit-transform: translate(100%, -50%);
+  -moz-transform: translate(100%, -50%);
+  -ms-transform: translate(100%, -50%);
+  -o-transform: translate(100%, -50%);
+  transform: translate(100%, -50%);
   -webkit-transition: transform 0.7s ease-out, opacity 0.7s ease-out;
   -moz-transition: transform 0.7s ease-out, opacity 0.7s ease-out;
   -o-transition: transform 0.7s ease-out, opacity 0.7s ease-out;
@@ -48,12 +52,13 @@ div.image-gallery img.pre-right-img {
 }
 
 div.image-gallery img.active {
+  display: block;
   opacity: 1;
-  -webkit-transform: translateX(0);
-  -moz-transform: translateX(0);
-  -ms-transform: translateX(0);
-  -o-transform: translateX(0);
-  transform: translateX(0);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   -webkit-transition: transform 0.7s ease-out, opacity 0.7s ease-out;
   -moz-transition: transform 0.7s ease-out, opacity 0.7s ease-out;
   -o-transition: transform 0.7s ease-out, opacity 0.7s ease-out;
@@ -61,12 +66,13 @@ div.image-gallery img.active {
 }
 
 div.image-gallery img.post-left-img {
+  display: block;
   opacity: 0;
-  -webkit-transform: translateX(100%);
-  -moz-transform: translateX(100%);
-  -ms-transform: translateX(100%);
-  -o-transform: translateX(100%);
-  transform: translateX(100%);
+  -webkit-transform: translate(100%, -50%);
+  -moz-transform: translate(100%, -50%);
+  -ms-transform: translate(100%, -50%);
+  -o-transform: translate(100%, -50%);
+  transform: translate(100%, -50%);
   -webkit-transition: transform 0.7s ease-out, opacity 0.7s ease-out;
   -moz-transition: transform 0.7s ease-out, opacity 0.7s ease-out;
   -o-transition: transform 0.7s ease-out, opacity 0.7s ease-out;
@@ -74,12 +80,13 @@ div.image-gallery img.post-left-img {
 }
 
 div.image-gallery img.post-right-img {
+  display: block;
   opacity: 0;
-  -webkit-transform: translateX(-100%);
-  -moz-transform: translateX(-100%);
-  -ms-transform: translateX(-100%);
-  -o-transform: translateX(-100%);
-  transform: translateX(-100%);
+  -webkit-transform: translate(-100%, -50%);
+  -moz-transform: translate(-100%, -50%);
+  -ms-transform: translate(-100%, -50%);
+  -o-transform: translate(-100%, -50%);
+  transform: translate(-100%, -50%);
   -webkit-transition: transform 0.7s ease-out, opacity 0.7s ease-out;
   -moz-transition: transform 0.7s ease-out, opacity 0.7s ease-out;
   -o-transition: transform 0.7s ease-out, opacity 0.7s ease-out;
@@ -95,6 +102,24 @@ div.image-gallery span.error-msg {
   -ms-transform: translateY(-50%);
   -o-transform: translateY(-50%);
   transform: translateY(-50%);
+}
+
+div.image-gallery button.arrow.hovercontrols {
+  opacity: 0;
+  
+  -webkit-transition: opacity 0.4s ease-out;
+  -moz-transition: opacity 0.4s ease-out;
+  -o-transition: opacity 0.4s ease-out;
+  transition: opacity 0.4s ease-out;
+}
+
+div.image-gallery:hover button.arrow.hovercontrols {
+  opacity: 1;
+
+  -webkit-transition: opacity 0.45s ease-in;
+  -moz-transition: opacity 0.45s ease-in;
+  -o-transition: opacity 0.45s ease-in;
+  transition: opacity 0.45s ease-in;
 }
 
 button:active {
