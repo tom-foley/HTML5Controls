@@ -93,3 +93,5 @@ To use the image gallery, we just need two(2) wrapper elements, the image elemen
 
 ### TODO
 -   Add option for image descriptions
+-   Add Lazy Loading/AJAX Loading option.
+  -     If set to true, only 3 pictures will load on page load an all others will load on an individual basis only when needed.   
