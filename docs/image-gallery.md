@@ -10,7 +10,8 @@ image-gallery.min.js (or image-gallery.js)
 To use the image gallery, we just need two(2) wrapper elements, the image elements themselves, and the javascript initialization. 
 -   The inner wrapper wrapper element which holds all image elements is required to be a `div.image-gallery`. This element will always have dimensions of `width: 100%; height: 100%`, so we need an outer wrapper to define a concrete height and width for the image gallery. 
 -   The outer wrapper wrapper doesn't need to be the immediate parent of the `div.image-gallery` and can be of `width: 100%; height: 100%` as well, but somewhere up the line of parent containers you must define a height and width in pixels that is > 0.
--   Finally, we simply need to initialize the image-gallery slideshow features with `var imageGallery = new ImageGallery();`
+-   Finally, we simply need to initialize the image-gallery slideshow features like so:
+    -   `var imageGallery = new ImageGallery();`
     -   ** Note this must be called after the image-gallery element has loaded
 
 #### Template
